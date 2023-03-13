@@ -1,0 +1,47 @@
+server:
+  port: 8081
+  tomcat:
+    connection-timeout: 1000m
+
+spring:
+  main:
+    allow-circular-references: true
+  mvc:
+    view: #视图解析器
+      prefix: /     #前缀
+      suffix: .html #后缀
+    static-path-pattern: /static/**
+  datasource:
+    url: jdbc:mysql://localhost:3307/五金?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: 1205
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    database: 0 # Redis数据库索引（默认为0）
+    host: localhost # Redis服务器地址
+    port: 6379 # Redis服务器连接端口
+  #数据源：数据库连接+账号密码
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect #数据库方言
+    show-sql: true #展示sql语句
+  jackson:  #时间格式化
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  servlet:
+    multipart:
+      enabled: true #开启文件上传下载
+      file-size-threshold: 2KB # 文件写入磁盘的阈值
+      max-file-size: 5MB
+      max-request-size: 10MB # 最大请求值大小
+##自定义文件保存路径
+#gorit:
+#  file:
+#    root:
+#      path: E:\Wujin
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
